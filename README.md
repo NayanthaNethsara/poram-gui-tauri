@@ -65,7 +65,7 @@ Download from the official compiler repo:
 
 ## Screenshots
 
-> ![Poram++ GUI Preview](assets/screenshot.png)
+> ![Poram++ GUI Preview](assets/screenshot-1.png)
 > Example: a form DSL input on the left, rendered HTML form on the right
 
 ---
