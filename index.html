@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Poram++ GUI</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <div id="customDialog" class="dialog hidden">
+      <div class="dialog-content">
+        <h3>Info</h3>
+        <p id="dialogText">Something happened</p>
+        <button onclick="hideDialog()">OK</button>
+      </div>
+    </div>
+
+    <div id="title-bar">
+      <div id="window-controls">
+        <span class="window-btn red" onclick="closeApp()"></span>
+        <span class="window-btn yellow" onclick="minimizeApp()"></span>
+        <span class="window-btn green" onclick="toggleMaximize()"></span>
+      </div>
+      <h1>Poram++ GUI</h1>
+    </div>
+
+    <div id="main">
+      <div class="left-panel">
+        <div class="panel-header">
+          <h2>DSL Editor</h2>
+        </div>
+        <div class="panel-content">
+          <textarea
+            id="dslInput"
+            placeholder="Write your form DSL here...&#10;&#10;Example:&#10;form 'Contact Form' {&#10;  input text 'Name' required&#10;  input email 'Email' required&#10;  textarea 'Message'&#10;  button 'Submit'&#10;}"
+          ></textarea>
+          <div class="button-group">
+            <button onclick="runPoram()">Generate HTML</button>
+            <button onclick="downloadHTML()">Download HTML</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-panel">
+        <div class="panel-header">
+          <h2>Output</h2>
+        </div>
+        <div class="panel-content">
+          <div class="toggle-buttons">
+            <button
+              id="btnPreview"
+              class="active"
+              onclick="switchView('preview')"
+            >
+              Preview
+            </button>
+            <button id="btnCode" onclick="switchView('code')">HTML Code</button>
+          </div>
+          <iframe id="previewFrame"></iframe>
+          <pre id="output" style="display: none"></pre>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>

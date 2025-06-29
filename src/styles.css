@@ -1,0 +1,300 @@
+/* Global */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  background: #0e0e0e;
+  color: #d4d4d4;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Title Bar */
+#title-bar {
+  background: rgba(30, 30, 30, 0.8);
+  backdrop-filter: blur(20px);
+  color: #d1d5db;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  -webkit-app-region: drag;
+}
+
+#title-bar h1 {
+  font-size: 13px;
+  font-weight: 500;
+  color: #cbd5e1;
+  margin: 0;
+}
+
+#window-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  -webkit-app-region: no-drag;
+}
+
+.window-btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.6);
+}
+
+.window-btn.red {
+  background: #ff5f57;
+}
+
+.window-btn.yellow {
+  background: #ffbd2e;
+}
+
+.window-btn.green {
+  background: #28c840;
+}
+
+/* Main Layout */
+#main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  background: #1a1a1a;
+}
+
+.left-panel,
+.right-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #121212;
+}
+
+/* Panel Headers */
+.panel-header {
+  padding: 16px;
+  border-bottom: 1px solid #2a2a2a;
+  background: #151515;
+}
+
+.panel-header h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #e5e7eb;
+}
+
+/* Panel Content */
+.panel-content {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Textarea */
+textarea {
+  flex: 1;
+  background: #1a1a1a;
+  color: #d4d4d4;
+  border: 1px solid #2c2c2c;
+  border-radius: 10px;
+  padding: 14px;
+  font-family: "SF Mono", Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 14px;
+  resize: none;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #555;
+}
+
+/* Placeholder */
+textarea::placeholder {
+  color: #666;
+  font-style: italic;
+}
+
+/* Button Group */
+.button-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+button {
+  background: #2e2e2e;
+  color: #e0e0e0;
+  border: 1px solid #3a3a3a;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 13px;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: #3a3a3a;
+}
+
+button:active {
+  background: #444;
+}
+
+/* Toggle Buttons */
+.toggle-buttons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  background: #1a1a1a;
+  padding: 4px;
+  border-radius: 8px;
+  border: 1px solid #2c2c2c;
+}
+
+.toggle-buttons button {
+  background: transparent;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  color: #999;
+  flex: 1;
+}
+
+.toggle-buttons button:hover {
+  background: #2a2a2a;
+  color: #ddd;
+}
+
+.toggle-buttons button.active {
+  background: #3a3a3a;
+  color: #fff;
+}
+
+/* Preview Output */
+iframe,
+pre {
+  flex: 1;
+  border: 1px solid #2c2c2c;
+  border-radius: 8px;
+  background: #1a1a1a;
+}
+
+pre {
+  padding: 16px;
+  color: #d4d4d4;
+  font-family: "SF Mono", Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 13px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #main {
+    flex-direction: column;
+  }
+
+  .left-panel,
+  .right-panel {
+    min-height: 50vh;
+  }
+}
+
+/* Pulse animation for loading (optional) */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.loading {
+  animation: pulse 2s infinite;
+}
+
+.dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5); /* Slightly darker for more focus */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px); /* optional for macOS blur effect */
+}
+
+.dialog-content {
+  background: #1e1e1e;
+  color: #d4d4d4;
+  padding: 24px;
+  border-radius: 10px;
+  min-width: 260px;
+  text-align: center;
+  border: 1px solid #2c2c2c;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+.dialog-content h3,
+.dialog-content p {
+  margin: 0 0 16px;
+  color: #e5e5e5;
+}
+
+.dialog-content button {
+  margin-top: 12px;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 1px solid #3a3a3a;
+  background: #2e2e2e;
+  color: #e0e0e0;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.dialog-content button:hover {
+  background: #3a3a3a;
+}
+
+.hidden {
+  display: none;
+}

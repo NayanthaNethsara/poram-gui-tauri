@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "poram-gui-tauri",
+  "version": "0.1.0",
+  "identifier": "com.poram-gui-tauri.app",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "title": "poram-gui-tauri",
+        "width": 800,
+        "height": 600,
+        "resizable": true,
+        "decorations": false,
+        "fullscreen": false,
+        "visible": true,
+        "minWidth": 400,
+        "minHeight": 300,
+        "maxWidth": 1920,
+        "maxHeight": 1080,
+        "closable": true,
+        "maximizable": true,
+        "minimizable": true
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "resources": ["bin/poram.exe"],
+    "icon": ["icons/icon.png", "icons/icon.ico"]
+  }
+}
